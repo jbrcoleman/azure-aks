@@ -1,0 +1,16 @@
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: default
+spec:
+  requirements:
+    - key: karpenter.k8s.azure.com/agentpool
+      operator: In
+      values: ["user"]
+  limits:
+    resources:
+      cpu: 1000
+      memory: 1000Gi
+  providerRef:
+    name: default
+  ttlSecondsAfterEmpty: 30

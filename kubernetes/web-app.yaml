@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: restricted-webapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: restricted-webapp
+  template:
+    metadata:
+      labels:
+        app: restricted-webapp
+    spec:
+      containers:
+      - name: restricted-webapp
+        image: ${CONTAINER_REGISTRY}/restricted-webapp:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: APP_ENV
+          value: "Production"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: restricted-webapp
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 5000
+    targetPort: 5000
+  selector:
+    app: restricted-webapp
