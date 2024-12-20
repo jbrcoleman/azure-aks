@@ -11,6 +11,7 @@ This project demonstrates a comprehensive cloud-native application architecture 
 - **Container Orchestration**: Kubernetes (AKS)
 - **Autoscaling**: Karpenter and Nodepool (NAP)
 - **Monitoring**: Prometheus
+- **Service Mesh**: Istio
 - **Visualization**: Grafana
 - **Web Application**: Python Flask
 

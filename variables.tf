@@ -6,5 +6,5 @@ variable "location" {
 variable "allowed_ip" {
   description = "IP address allowed to access the web application"
   type        = string
-  default     = "" 
+  default     = "147.161.166.203"
 }
